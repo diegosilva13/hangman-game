@@ -3,10 +3,9 @@ import { CommonModule } from '@angular/common';
 
 import {HangmanComponent} from './hangman.component';
 import {HangmanRoutingModule} from './hangman-routing.module';
-import {HumanBodyService} from './human/shared/human-body.service';
-import {HumanComponent} from './human/human.component';
+import {GallowsService} from './gallows/shared/gallows.service';
 import {GallowsComponent} from './gallows/gallows.component';
-import {LayoutModule} from '../layout/layout.module';
+import {GallowsFactory} from './gallows/shared/gallows-builder/gallows.factory';
 
 @NgModule({
   imports: [
@@ -15,16 +14,15 @@ import {LayoutModule} from '../layout/layout.module';
   ],
   declarations: [
     HangmanComponent,
-    GallowsComponent,
-    HumanComponent
+    GallowsComponent
   ],
   providers: [
-    HumanBodyService
+    GallowsService,
+    GallowsFactory
   ],
   exports: [
     GallowsComponent,
     CommonModule,
-    HumanComponent
   ]
 })
 export class HangmanModule { }
