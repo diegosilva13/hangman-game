@@ -2,21 +2,25 @@
   <div class="jumbotron">
     <div class="row">
       <div class="col">
-        <app-gallows></app-gallows>
+        <h3>Errors</h3>
+        <span *ngFor="let item of errors; let i = index">
+          <h6 style="color: red; display: inline-flex">{{errors[i].toUpperCase()}}</h6>
+        </span>
+        <h4 *ngIf="errorMessage" style="color: red;" class="alert">{{errorMessage}}</h4>
+        <h4 *ngIf="successMessage" style="color: green;" class="alert">{{successMessage}}</h4>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <app-gallows (finishGame)="finishGame($event)"></app-gallows>
       </div>
     </div>
     <div class="row">
       <div class="col col-sm-2"></div>
       <div class="col" style="display: inline-flex !important;">
-        <input value="D" type="text" class="form-control" style="width: 39px;border-top: 0px transparent !important;border: none;line-height: 0px !important;font-weight: bold;text-transform: uppercase;font-family: cursive;"> &nbsp;
-        <input value="I" type="text" class="form-control" style="width: 39px;border-top: 0px transparent !important;border: none;line-height: 0px !important;font-weight: bold;text-transform: uppercase;font-family: cursive;"> &nbsp;
-        <input value="A" type="text" class="form-control" style="width: 39px;border-top: 0px transparent !important;border: none;line-height: 0px !important;font-weight: bold;text-transform: uppercase;font-family: cursive;"> &nbsp;
-        <input value="D" type="text" class="form-control" style="width: 39px;border-top: 0px transparent !important;border: none;line-height: 0px !important;font-weight: bold;text-transform: uppercase;font-family: cursive;"> &nbsp;
-        <input value="I" type="text" class="form-control" style="width: 39px;border-top: 0px transparent !important;border: none;line-height: 0px !important;font-weight: bold;text-transform: uppercase;font-family: cursive;"> &nbsp;
-        <input value="A" type="text" class="form-control" style="width: 39px;border-top: 0px transparent !important;border: none;line-height: 0px !important;font-weight: bold;text-transform: uppercase;font-family: cursive;"> &nbsp;
-        <input value="D" type="text" class="form-control" style="width: 39px;border-top: 0px transparent !important;border: none;line-height: 0px !important;font-weight: bold;text-transform: uppercase;font-family: cursive;"> &nbsp;
-        <input value="I" type="text" class="form-control" style="width: 39px;border-top: 0px transparent !important;border: none;line-height: 0px !important;font-weight: bold;text-transform: uppercase;font-family: cursive;"> &nbsp;
-        <input value="A" type="text" class="form-control" style="width: 39px;border-top: 0px transparent !important;border: none;line-height: 0px !important;font-weight: bold;text-transform: uppercase;font-family: cursive;"> &nbsp;
+        <span *ngFor="let item of letters; let i = index">
+          <input disabled="true" [(ngModel)]="letters[i]" type="text" class="form-control" style="width: 39px;border-top: 0px transparent !important;line-height: 0px !important;font-weight: bold;text-transform: uppercase;font-family: cursive;margin-left: 5px;">
+        </span>
       </div>
     </div>
     <hr/>
@@ -26,9 +30,10 @@
         <form class="form-inline" style="margin-top: 10px;">
           <div class="form-group mx-sm-3">
             <label for="letter" class="sr-only">Letter</label>
-            <input type="text" class="form-control" id="letter" style="width: 39px;border-top: 0px transparent !important;border: none;line-height: 0px !important;font-weight: bold;text-transform: uppercase;font-family: cursive;">
+            <input [(ngModel)]="letter" maxlength="1" type="text" name="part" class="form-control" id="letter" style="width: 39px;border-top: 0px transparent !important;border: none;line-height: 0px !important;font-weight: bold;text-transform: uppercase;font-family: cursive;"/>
           </div>
-          <button type="submit" class="btn btn-primary">Play Letter</button>
+          <button type="button" class="btn btn-primary" (click)="play()">Play Letter</button>
+          <button style="margin-left: 15px;" type="button" class="btn btn-danger" (click)="newWord()">Restart</button>
         </form>
       </div>
     </div>

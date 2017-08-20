@@ -6,11 +6,14 @@ import {HangmanRoutingModule} from './hangman-routing.module';
 import {GallowsService} from './gallows/shared/gallows.service';
 import {GallowsComponent} from './gallows/gallows.component';
 import {GallowsFactory} from './gallows/shared/gallows-builder/gallows.factory';
+import {HangmanService} from './shared/hangman.service';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   imports: [
     CommonModule,
-    HangmanRoutingModule
+    HangmanRoutingModule,
+    FormsModule
   ],
   declarations: [
     HangmanComponent,
@@ -18,7 +21,8 @@ import {GallowsFactory} from './gallows/shared/gallows-builder/gallows.factory';
   ],
   providers: [
     GallowsService,
-    GallowsFactory
+    GallowsFactory,
+    HangmanService
   ],
   exports: [
     GallowsComponent,

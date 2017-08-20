@@ -5,6 +5,6 @@ export class Head implements IGallowsParts {
   constructor() {}
 
   imageLocation(): string {
-    return '';
+    return '../../../../assets/hangman/head.png';
   }
 }
